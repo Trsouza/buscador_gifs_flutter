@@ -117,14 +117,19 @@ int _getContagem(List dados){
       itemBuilder: (context, index) {
         if(_buscar == null || index < snapshot.data["data"].length){
         return GestureDetector(
-          child: FadeInImage.memoryNetwork( // fara as imagens serem exibidas mais lentamente/suavemente
-            placeholder: kTransparentImage,
-             image: snapshot.data["data"][index]["images"]["fixed_height"]
+          // child: FadeInImage.memoryNetwork( // fara as imagens serem exibidas mais lentamente/suavemente
+          //   placeholder: kTransparentImage,
+          //    image: snapshot.data["data"][index]["images"]["fixed_height"]
+          //       ["url"], // essas palavras em cochete são do json da APi
+          //   height: 300.0,
+          //   fit: BoxFit.cover,
+          // ),
+          child: Image.network(
+            snapshot.data["data"][index]["images"]["fixed_height"]
                 ["url"], // essas palavras em cochete são do json da APi
             height: 300.0,
             fit: BoxFit.cover,
-          
-          ),
+            ),
           onTap: (){  // chamará a nova tela
             Navigator.push(context,
             MaterialPageRoute(builder: (context) => PaginaGIf(snapshot.data["data"][index]))
